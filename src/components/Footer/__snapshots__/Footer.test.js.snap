@@ -10,7 +10,7 @@ exports[`Footer renders default form according to snapshot 1`] = `
     >
       <div>
         <p>
-          Universidad del Norte Santo Tomas de Aquino - Tucuman, Argentina, 2021 |
+          Universidad del Norte Santo Tomás de Aquíno - Tucumán, Argentina, 2021 |
         </p>
         <a
           href="https://apparcar-unsta.netlify.app/"

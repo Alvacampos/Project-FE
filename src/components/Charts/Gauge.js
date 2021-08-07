@@ -16,31 +16,41 @@ const GaugeChart = ({ data, categories }) => {
       text: '',
     },
     xAxis: {
-      //categories: categories,
       title: {
         text: null,
       },
+      labels: {
+        enabled: false
+      }
+    },
+    yAxis: {
+      title: {
+        text: "Test Funcional",
+      },
+      min: 0,
+    	max: 99,
+    },
+    plotOptions: {
+      series: {
+        dataLabels: {
+            enabled: true,
+            format: '{y} %'
+        }
+      },
+      enableMouseTracking: false
+    },
+    credits: {
+      enabled: false
     },
     series: [
       {
-        name: 'Move',
+        name: 'Test Funcional',
         data: [
           {
-            color: Highcharts.getOptions().colors[0],
-            radius: '112%',
-            innerRadius: '88%',
-            y: 80,
-          },
-        ],
-      },
-      {
-        name: 'Exercise',
-        data: [
-          {
-            color: Highcharts.getOptions().colors[1],
-            radius: '87%',
+            color: Highcharts.getOptions().colors[4],
+            radius: '80%',
             innerRadius: '63%',
-            y: 65,
+            y: 80,
           },
         ],
       }

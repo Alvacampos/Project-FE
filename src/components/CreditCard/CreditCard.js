@@ -10,20 +10,17 @@ import {
 } from '../../utils/card-utils';
 import axios from 'axios';
 import './CreditCard.css';
+import { useDispatch } from 'react-redux';
+import { userData } from '../../actions/index';
+import { HOME_DATA } from '../../actions/types';
 
 const CreditCard = ({ number, brand, expiry, storedUser }) => {
   const [exist, setExist] = useState(false);
-  const [justRegister, setJustRegister] = useState(false);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    if (number || justRegister) setExist(true);
+    if (number) setExist(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (justRegister) setExist(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [justRegister]);
 
   // Registration subComponent
   const Registration = () => {
@@ -96,7 +93,8 @@ const CreditCard = ({ number, brand, expiry, storedUser }) => {
               },
               { headers },
             );
-            setJustRegister(true);
+            setExist(true);
+            dispatch(userData(HOME_DATA, cardInfo));
           } catch (e) {
             console.error('Opps!', e);
           }
@@ -188,7 +186,7 @@ const CreditCard = ({ number, brand, expiry, storedUser }) => {
                   <label>
                     {text.profile.complete_name}:
                     <input
-                      id="name"
+                      id="name-card"
                       type="text"
                       name="name"
                       value={cardInfo.name}
@@ -230,7 +228,7 @@ const CreditCard = ({ number, brand, expiry, storedUser }) => {
   const CardData = () => {
     let hideNum = [];
     const hideCard = () => {
-      for (let i = 0; i < number.length; i++) {
+      for (let i = 0; i < number?.length; i++) {
         if (i < number.length - 4) {
           hideNum.push('*');
         } else {

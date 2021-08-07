@@ -23,7 +23,7 @@ const SignInForm = () => {
   const callError = () => {
     setErrorMessage(null);
   };
-  
+
   const eye = (
     <IcomoonReact iconSet={iconSet} color="#444" size={25} icon="eye" />
   );
@@ -55,13 +55,13 @@ const SignInForm = () => {
 
   const getDetailsFromServer = async () => {
     setErrorMessage(null);
+    console.log('asd', user);
     const payload = { email: user.email, password: user.password };
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/signin`,
         payload,
       );
-      // TRAER INFO DE VEHICULO
       dispatch(userData(SIGN_IN, response.data));
       if (response) history.push('/home');
     } catch (err) {

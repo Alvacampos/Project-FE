@@ -32,7 +32,7 @@ const Home = () => {
   };
 
   const successCallback = (locationData) => {
-    setlocationPoint(locationData);    
+    setlocationPoint(locationData);
   }
 
   const failureCallback = (e) => {
@@ -54,14 +54,14 @@ const Home = () => {
         failureCallback,
         options,
       );
-    } 
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
+
   return (
     <div className="home-view">
       <NavBarComponent isGuest={false} inRegistration={false} />
-      <div className="asd"></div>
+      <div className="city-container"></div>
       <div className="home-container">
         <div className="box">
           <ParkingListComponent

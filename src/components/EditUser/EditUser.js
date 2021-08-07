@@ -7,22 +7,24 @@ import { HOME_DATA } from '../../actions/types';
 import iconSet from '../../icons.json';
 import IcomoonReact from 'icomoon-react';
 import { useDispatch } from 'react-redux';
+import Alert from '../Alert/Alert';
+import "./EditUser.css"
 
-const EditUser = ({ user }) => {
+const EditUser = ({ user, updateInfo }) => {
   const [show, setShow] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setpasswordConfirmShown] = useState(false);
 
   const dispatch = useDispatch();
 
   const [form, setForm] = useState({
-    name: '',
-    surname: '',
+    name: undefined,
+    surname: undefined,
     newEmail: '',
     password: '',
     confirmPassword: '',
   });
+  const [error, setError] = useState(false);
 
   const eye = (
     <IcomoonReact iconSet={iconSet} color="#444" size={23} icon="eye" />
@@ -65,91 +67,84 @@ const EditUser = ({ user }) => {
     });
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setForm({
+      name: undefined,
+      surname: undefined,
+      newEmail: '',
+      password: '',
+      confirmPassword: '',
+    });
+  }
   const handleShow = () => setShow(true);
+
+
+  const callError = () => {
+    setError(false);
+  };
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    if (form.password === form.confirmPassword) {
+    if (form.password === form.confirmPassword && form.name !== undefined
+      && form.surname !== undefined && form.password.length >= 8 && form.name.length !== 0 && form.surname.length !== 0) {
       sendDetailsToServer();
     } else {
-      setErrorMessage(text.registrationForm.error_confirm);
+      setError(true);
     }
   };
 
   const sendDetailsToServer = async () => {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const isValid = re.test(String(form.email).toLowerCase());
-    if (!isValid) {
-      setErrorMessage(text.registrationForm.error_nodata);
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const isValid = re.test(String(form.newEmail).toLowerCase());
+    if(!isValid) {
+      setError(true);
       return;
     }
 
     if (form.password.length < 8) {
-      setErrorMessage(text.registrationForm.error_nodata);
+      setError(true);
       return;
     }
 
     if (form.password.length >= 8 && isValid) {
-      setErrorMessage(null);
+      setError(false);
       try {
         const headers = {
           Authorization: localStorage.getItem('jwt'),
         };
         const { newEmail, password, name, surname } = form;
         const response = await axios.patch(
-          `${process.env.REACT_APP_SERVER_URL}/user`,
-          { email: user.email, newEmail, password, name, surname },
+          `${process.env.REACT_APP_SERVER_URL}/update_users`,
+          { email: localStorage.getItem('email'), newEmail, password, name, surname },
           { headers },
         );
         if (response.status === 200) {
           alert(text.profile.updateCorrect);
           handleClose();
           refreshData();
+          localStorage.setItem('email', form.newEmail);
+          updateInfo()
         }
       } catch (e) {
         console.error(e);
-        setErrorMessage(text.registrationForm.error_email);
+        setError(true);
       }
-    }
-  };
-
-  const EditInfo = () => {
-    if (!errorMessage) {
-      return (
-        <button
-          data-testid="submit-edition"
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmitClick}
-        >
-          Editar Informacion
-        </button>
-      );
-    } else {
-      return (
-        <button
-          data-testid="submit-edition"
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmitClick}
-          disabled
-        >
-          Editar Informacion
-        </button>
-      );
     }
   };
 
   return (
     <div>
-      <Button variant="primary" onClick={handleShow}>
+      <Button data-testid="editBtn" variant="primary" onClick={handleShow}>
         Editar Usuario
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>Ingrese Nuevos Datos de Usuario</Modal.Header>
+        <Modal.Header className="modal-header-profile" closeButton>
+          <span id="modal-header-profile-span">
+            Ingrese Nuevos Datos de Usuario
+          </span>
+        </Modal.Header>
         <Modal.Body className="form-group text-left">
           <form>
             <div className="form-group text-left">
@@ -205,7 +200,7 @@ const EditUser = ({ user }) => {
                   value={form.password}
                   onChange={handleChange}
                 />
-                <i className="eye-signup" onClick={togglePasswordVisiblity}>
+                <i className="eye-edit" onClick={togglePasswordVisiblity}>
                   {passwordShown ? eye : eyeBlocked}
                 </i>
               </div>
@@ -225,7 +220,7 @@ const EditUser = ({ user }) => {
                   onChange={handleChange}
                 />
                 <i
-                  className="eye-signup"
+                  className="eye-edit"
                   onClick={togglePasswordConfirmVisiblity}
                 >
                   {passwordConfirmShown ? eye : eyeBlocked}
@@ -235,12 +230,28 @@ const EditUser = ({ user }) => {
           </form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          {error ? (
+            <Alert
+              errorMessage={text.profile.updateError}
+              hideError={callError}
+            />
+          ) : null}
+          <Button
+            data-testid="closeUserBtn"
+            variant="secondary"
+            onClick={handleClose}
+          >
             {text.modal.close}
           </Button>
-          <EditInfo>
+          <Button
+            data-testid="submit-edition"
+            varian="primary"
+            className="btn btn-primary"
+            disabled={error}
+            onClick={(handleClose, handleSubmitClick)}
+          >
             {text.modal.save}
-          </EditInfo>
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

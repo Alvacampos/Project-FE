@@ -1,13 +1,13 @@
 .profile-view {
   margin: 5vh;
-  height: 75vh;
   display: flex;
   justify-content: space-evenly;
+  margin-bottom: 0;
 }
 
 .profile-card-wrapper {
   width: 35vw;
-  height: 45vh;
+  height: 100%;
   margin: 10px;
 }
 
@@ -49,15 +49,35 @@
     margin: 0;
     justify-content: inherit;
     flex-direction: column;
-    height: 115vh;
   }
   .profile-card-wrapper {
-    height: 75vh;
+    height: 122vh;
     width: 68.5%;
     align-self: center;
   }
   .profile-extra {
     align-self: center;
     width: 70%;
+  }
+}
+
+@media only screen and (max-height: 736px) {
+  .profile-view {
+    margin: 0;
+    justify-content: inherit;
+    flex-direction: column;
+  }
+  .profile-card-wrapper {
+    height: 121vh;
+    width: 68.5%;
+    align-self: center;
+  }
+  .profile-extra {
+    align-self: center;
+    width: 70%;
+    height: 100%;
+  }
+  .footer-profile {
+    margin-top: 5vh;
   }
 }

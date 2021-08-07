@@ -25,12 +25,12 @@
 
 .first-metric {
   display: flex;
-  margin: 10px;
+  margin: 0;
 }
 
 .second-metric {
   display: flex;
-  margin: 10px;
+  margin: 0;
 }
 
 .second-chart {

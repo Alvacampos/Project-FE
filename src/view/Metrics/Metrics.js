@@ -1,5 +1,7 @@
 import React from 'react';
 import Gauge from 'components/Charts/Gauge';
+import Gauge3 from 'components/Charts/Gauge3';
+import Gauge2 from 'components/Charts/Gauge2';
 import Bar from 'components/Charts/Bar';
 import Line from 'components/Charts/Line';
 import NavBarComponent from 'components/NavBarComponent/NavBarComponent';
@@ -40,17 +42,25 @@ const Metrics = () => {
   return (
     <div>
       <NavBarComponent isGuest={false} inRegistration={false} />
-      <div className="metrics-view">
+      <div data-testid="metrics-div-view" className="metrics-view">
         <div className="metrics-intro">
           <h1>{text.metrics.title}</h1>
           <p>{text.metrics.subtitle}</p>
         </div>
         <div className="first-metric">
           <div className="second-chart">
+            <Bar />
+          </div>
+        </div>
+        <div className="first-metric">
+          <div className="second-chart">
             <Gauge data={sprintData} categories={sprintCategories} />
           </div>
           <div className="second-chart">
-            <Bar />            
+            <Gauge3 data={sprintData} categories={sprintCategories} />
+          </div>
+          <div className="second-chart">
+            <Gauge2 data={sprintData} categories={sprintCategories} />
           </div>
         </div>
         <div className="second-metric">

@@ -29,6 +29,7 @@ exports[`RegistrationForm renders default form according to snapshot 1`] = `
         </label>
         <input
           class="form-control"
+          data-testid="input-name"
           id="name"
           placeholder="Ingresar Nombre"
           required=""
@@ -46,6 +47,7 @@ exports[`RegistrationForm renders default form according to snapshot 1`] = `
         </label>
         <input
           class="form-control"
+          data-testid="input-surname"
           id="surname"
           placeholder="Ingresar Apellido"
           required=""
@@ -59,7 +61,7 @@ exports[`RegistrationForm renders default form according to snapshot 1`] = `
         <label
           for="InputMail"
         >
-          Direccion de Email
+          Dirección de Email
         </label>
         <input
           aria-describedby="emailHelp"
@@ -174,14 +176,15 @@ exports[`RegistrationForm renders default form according to snapshot 1`] = `
         <label
           for="InputvehicleType"
         >
-          Tipo de Vehiculo
+          Tipo de Vehículo
         </label>
         <select
           class="form-control"
+          data-testid="vehicle-select"
           required=""
         >
           <option>
-            Elegir tipo de Vehiculo
+            Elegir tipo de Vehículo
           </option>
           <option
             value="motorbike"
@@ -210,6 +213,7 @@ exports[`RegistrationForm renders default form according to snapshot 1`] = `
         </label>
         <input
           class="form-control"
+          data-testid="input-vehicleplate"
           id="vehiclePlate"
           placeholder="Patente"
           required=""

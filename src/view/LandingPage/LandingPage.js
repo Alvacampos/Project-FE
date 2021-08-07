@@ -21,13 +21,13 @@ const LandingPageView = () => {
         </div>
       </div>
       <div className="landing-1">
-        <Landing
+        {/* <Landing
           name={text.landingPage.sections.section1.title}
           text={text.landingPage.sections.section1.text}
-        />
+        /> */}
       </div>
       <div className="landing-2">
-        <div className="landing-2-section">          
+        <div className="landing-2-section">
           <Landing
             name={text.landingPage.sections.section3.title}
             text={text.landingPage.sections.section3.text1}

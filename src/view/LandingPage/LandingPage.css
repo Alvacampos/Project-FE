@@ -153,6 +153,23 @@
     margin-bottom: 2rem;
   }
 
+  .landing-1 {
+    height: 35vh;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  .landing .landing-section {
+    display: none;
+  }
+
+  .landing-2 {
+    margin-top: -10vh;
+  }
+
   .landing-2-section {
     width: 40vw;
   }
@@ -160,9 +177,18 @@
   .landing-map-wrapper {
     width: 60vw;
     height: 60vh;
+    margin-top: 17vh;
   }
 
   .landing-3 {
     height: 50vh;
+  }
+  .landing-intro .text-wrapper p:first-child {
+    font-size: 2rem;
+  }
+
+  .landing-intro .text-wrapper p:nth-child(2) {
+    font-size: 1.5rem;
+    width: 70%;
   }
 }

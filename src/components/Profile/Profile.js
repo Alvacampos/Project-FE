@@ -27,7 +27,7 @@ const UserProfile = ({ user, isMain }) => {
         { headers },
       );
       if (response.status === 200) {
-        alert('Cuenta Borrada Exitosamente. Hasta la vista baby.');
+        alert('Cuenta Borrada Exitosamente.');
         localStorage.clear();
         dispatch(userData(SIGN_OFF));
         history.push('/');
@@ -47,8 +47,6 @@ const UserProfile = ({ user, isMain }) => {
         { email: localStorage.getItem('email') },
         { headers },
       );
-
-      //setData(response.data);
       dispatch(userData(HOME_DATA, response.data));
     } catch (e) {
       console.error('Opps!', e);
@@ -154,13 +152,14 @@ const UserProfile = ({ user, isMain }) => {
 
     return (
       <Modal show={show} className="modal" onHide={handleClose}>
-        <Modal.Header closeButton></Modal.Header>
-        <Modal.Body className="vehicle-edition">
+        <Modal.Header closeButton><span>Editar Vehiculo</span></Modal.Header>
+        <Modal.Body id="vehicle-edition">
           <div className="form-select">
             <SelectVehicle />
           </div>
           <div className="form-plate">
             <input
+              data-testid="vehiclePlate"
               type='text'
               className='form-control'
               id='vehiclePlate'
@@ -180,6 +179,7 @@ const UserProfile = ({ user, isMain }) => {
               {text.modal.close}
             </Button>
             <Button
+              data-testid="saveVehicleBtn"
               variant="primary"
               className="savebtn"
               disabled={error}
@@ -210,7 +210,7 @@ const UserProfile = ({ user, isMain }) => {
         </Card.Subtitle>
         <Card.Text>{user.email}</Card.Text>
         <br></br>
-        <EditUser />
+        <EditUser updateInfo={refreshData} />
         <br></br>
         <Button className="btn btn-danger" onClick={deleteAccount}>
           {text.profile.delete}
@@ -227,14 +227,14 @@ const UserProfile = ({ user, isMain }) => {
         <Card.Subtitle className='card-subtitle'>
           {text.profile.vehiclePlate}:
         </Card.Subtitle>
-        <Card.Text>{user.vehiclePlate}</Card.Text>
+        <Card.Text data-testid="plateData">{user.vehiclePlate}</Card.Text>
         <Card.Subtitle className='card-subtitle'>
           {text.profile.vehicleType}:
         </Card.Subtitle>
-        <Card.Text>
+        <Card.Text data-testid="vehicleType">
           {user.vehicleType ? text.vehicleOptions[user.vehicleType] : '-'}
         </Card.Text>
-        <Button variant='primary' onClick={handleShow}>
+        <Button data-testid="vehicleBtn" variant='primary' onClick={handleShow}>
           Editar Vehiculo
         </Button>
       </Card.Body>

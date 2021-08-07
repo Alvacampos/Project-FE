@@ -15,9 +15,6 @@ const Reserva = ({ show, close, modalTitle, modalText }) => {
         <h5>{modalTitle}</h5>
       </div>
       <div className="modal-content">
-        <span onClick={close} className="close-modal-btn">
-          x
-        </span>
         <div className="modal-body">
           <h6>{modalText}</h6>
         </div>

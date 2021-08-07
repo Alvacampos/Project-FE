@@ -47,7 +47,7 @@
   font-size: 20px;
 }
 
-.vehicle-edition {
+#vehicle-edition {
   background-image: url('../../img/city.jpg');
   background-size: cover;
 }

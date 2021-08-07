@@ -2,7 +2,7 @@
   height: 100%;
 }
 
-.home-view .asd {
+.home-view .city-container {
   text-align: center;
   background-image: url('../../img/city2.png');
   height: 20vh;
@@ -12,7 +12,7 @@
   font-size: 48px;
   font-weight: 700;
   line-height: 48px;
-  margin: 5px 0 0;
+  margin: 0;
   padding: 10px 30px;
   text-align: center;
   text-transform: uppercase;
@@ -41,7 +41,7 @@
 }
 
 @media only screen and (max-height: 900px) {
-  .home-view h1 {
-    height: 27vh;
+  .home-view .city-container {
+    height: 30vh;
   }
 }

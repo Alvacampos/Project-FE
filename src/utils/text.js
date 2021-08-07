@@ -2,24 +2,24 @@ const text = {
   general: {
     name: 'Nombre',
     surname: 'Apellido',
-    email: 'Direccion de Email',
+    email: 'Dirección de Email',
     age: 'Edad',
-    vehicle: 'Tipo de Vehiculo',
+    vehicle: 'Tipo de Vehículo',
     plate: 'Patente',
   },
   landingPage: {
     title:
-      'Proyecto Final Tecnicatura en Desarrollo de Software y Control de Calidad',
+      'Proyecto Final Tecnicatura Universitaria en Desarrollo de Software y Control de Calidad',
     subtitle:
-      'Integrantes: Gonzalo Alvarez Campos, Lourdes Delgado Vitalone, Agustín Fogliatto, Lucas Gali, Ignacio Granero, Rodrigo Rivadeneira, Jacqueline Zelaya',
+      'Integrantes: Gonzalo Alvarez Campos, Jacqueline Zelaya, Lourdes Delgado Vitalone, Lucas Gali, Agustín Fogliatto, Rodrigo Rivadeneira',
     sections: {
       section1: {
         title: 'Una nueva forma de estacionar',
         text: '¡RÁPIDO, FÁCIL Y PRÁCTICO DE USAR!',
       },
       section2: {
-        title: 'Tecnologias que se usaron',
-        text: 'Para realizar este proyecto se utilizaron tecnologias como MongoDB, Express, ReactJs, NodeJs y herramientas de testeo como Mocha y Chai. Se trabajo en gitlab y despues se migro a github. Usamos como hosting netlify para el front end y heroku para el backend. Para la seccion de metrics usamos una libreria llamada Highcharts para generar graficas dinamicas e interactivas!',
+        title: 'Tecnologías que se implementaron',
+        text: 'Para realizar este proyecto se utilizaron tecnologías como MongoDB, Express, ReactJs, NodeJs y herramientas de testeo como Mocha y Chai. Se trabajo en gitlab y despues se migro a github. Usamos como hosting netlify para el front end y heroku para el backend. Para la seccion de metrics usamos una libreria llamada Highcharts para generar graficas dinamicas e interactivas!',
       },
       section3: {
         title: 'Proceso',
@@ -33,14 +33,14 @@ const text = {
   home: {
     welcome: 'Bienvenidos a AppArCar',
     table: {
-      searchInput: 'Buscar por nombre y/o direccion',
+      searchInput: 'Buscar por nombre y/o dirección',
     },
   },
   parkingTable: {
     columns: {
       name: 'Nombre',
-      address: 'Direccion',
-      attention: 'Horario de Atencion',
+      address: 'Dirección',
+      attention: 'Horario de Atención',
       price: 'Precio',
       reserve: 'Reservar',
       cancel: 'Cancelar',
@@ -50,7 +50,7 @@ const text = {
     btn: 'Crear Cuenta',
     password: 'Contraseña',
     confirmPsw: 'Confirmar Contraseña',
-    msg: 'Estas a un click de tu reserva',
+    msg: 'Estás a un click de tu reserva',
     error_nodata: "Por favor, completar el formulario",
     error_email:'El mail ya existe',
     error_confirm: 'La contraseña es distinta a la confirmada',
@@ -61,29 +61,28 @@ const text = {
   },
   profile: {
     title: 'Perfil',
-    vehicleTitle: 'Vehiculo',
+    vehicleTitle: 'Vehículo',
     vehiclePlate: 'Patente',
     vehicleType: 'Tipo',
-    msg: 'Informacion Personal',
+    msg: 'Información Personal',
     delete: 'Eliminar cuenta',
     updateError:
-      'La informacion ingresada no es valida, ingrese informacion valida',
-    updateCorrect:'Informacion del usuario actualizada exitosamente',
+      'La información ingresada no es válida, ingrese datos válidos',
+    updateCorrect:'Información del usuario actualizada exitosamente',
     credit: 'Tarjeta',
-    number: 'Numero de tarjeta',
+    number: 'Número de tarjeta',
     complete_name: 'Nombre',
     expiry: 'Vencimiento',
     valid_until: 'vence',
     cvc: 'CVC',
     company: 'Empresa',
     register: 'Registrar Tarjeta',
-    invalid_data: 'Informacion no valida',
+    invalid_data: 'Información no válida',
   },
   metrics: {
-    title: 'Metricas del Proyecto Final',
+    title: 'Métricas del Proyecto Final',
     subtitle:
-      'Aqui les mostraremos algunos graficos con datos que se fueron tomando a lo largo del proceso de desarrollo de este proyecto.',
-    firstMetric: 'Aqui vamos a tener humo de planning',
+      'En esta sección encontrarás información del progreso de nuestro proyecto.'
   },
   notFound: {
     msg: '404 - Not Found!',
@@ -95,14 +94,14 @@ const text = {
     signup: 'Registrarse',
     app: 'AppArCar',
     back: 'Volver',
-    signOff: 'Cerrar Sesion',
+    signOff: 'Cerrar Sesión',
     home: 'Inicio',
     profile: 'Perfil',
-    metrics: 'Metricas',
+    metrics: 'Métricas',
   },
   footer: {
     unsta:
-      'Universidad del Norte Santo Tomas de Aquino - Tucuman, Argentina, 2021 |',
+      'Universidad del Norte Santo Tomás de Aquíno - Tucumán, Argentina, 2021 |',
     site: 'apparcar-unsta.netlify.app',
     unstaBtn: '- UNSTA - TDSC',
     gdocBtn: '- G-Doc',
@@ -110,7 +109,7 @@ const text = {
     repoBtn: '- Repositorio',
   },
   vehicleOptions: {
-    title: 'Elegir tipo de Vehiculo',
+    title: 'Elegir tipo de Vehículo',
     motorbike: 'Moto',
     car: 'Auto',
     truck: 'Camioneta',
